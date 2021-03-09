@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import Spinner from "../common/Spinner";
 import * as usuariosActions from "../../actions/usuariosActions";
 
 class Usuarios extends Component {
@@ -17,21 +17,26 @@ class Usuarios extends Component {
 		this.props.traerTodos();
 	}
 
-	render() {
+	ponerContenido = () => {
 		return (
-			<div>
-				<table className='tabla'>
-					<thead>
-						<tr>
-							<th>Nombre</th>
-							<th>Correo</th>
-							<th>Enlace</th>
-						</tr>
-					</thead>
-					<tbody>{this.ponerFilas()}</tbody>
-				</table>
-			</div>
+			<table className='tabla'>
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Correo</th>
+						<th>Enlace</th>
+					</tr>
+				</thead>
+				<tbody>{this.ponerFilas()}</tbody>
+			</table>
 		);
+	};
+
+	render() {
+		if (this.props.cargando) {
+			return <Spinner />;
+		}
+		return <div>{this.ponerContenido()}</div>;
 	}
 }
 

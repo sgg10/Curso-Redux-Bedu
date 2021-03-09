@@ -4,17 +4,23 @@ import "./index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+import reduxThunk from "redux-thunk";
+
+import reducers from "./reducers";
 
 const store = createStore(
-	{}, // Todos los reducers
-	{} // Estado inicial
+	reducers, //* Todos los reducers
+	{}, // Estado inicial
+	applyMiddleware(reduxThunk)
 );
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<Provider store={store}>
+			<App />
+		</Provider>
 	</React.StrictMode>,
 	document.getElementById("root")
 );

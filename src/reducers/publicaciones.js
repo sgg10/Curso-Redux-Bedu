@@ -1,4 +1,4 @@
-import { TRAER_TODOS, CARGANDO, ERROR } from "../types/publicacionesTypes";
+import { TRAER_POR_USUARIOS, CARGANDO, ERROR } from "../types/publicacionesTypes";
 const INITIAL_STATE = {
 	publicaciones: [],
 	cargando: false,
@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 
 function reducer(state = INITIAL_STATE, action) {
 	switch (action.type) {
-		case TRAER_TODOS:
+		case TRAER_POR_USUARIOS:
 			return { ...state, publicaciones: action.payload, cargando: false, error: "" };
 		case CARGANDO:
 			return { ...state, cargando: true };

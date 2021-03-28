@@ -22,12 +22,12 @@ export const traerPorUsuario = (key) => async (dispatch, getState) => {
 		};
 
 		dispatch({
-			type: USUARIOS_TRAER_TODOS,
-			payload: usuarios_actualizados,
-		});
-		dispatch({
 			type: TRAER_POR_USUARIOS,
 			payload: publicaciones_actualizadas,
+		});
+		dispatch({
+			type: USUARIOS_TRAER_TODOS,
+			payload: usuarios_actualizados,
 		});
 	} catch (error) {
 		dispatch({ type: ERROR, payload: `❗❗Error: ${error.message}` });

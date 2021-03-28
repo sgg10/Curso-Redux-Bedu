@@ -12,7 +12,12 @@ export const traerPorUsuario = (key) => async (dispatch, getState) => {
 
 	try {
 		const data = (await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${usuarios_id}`)).data;
-		const publicaciones_actualizadas = [...publicaciones, data];
+		const nuevas = data.map((publicacion) => ({
+			...publicacion,
+			comentarios: [],
+			abierto: false,
+		}));
+		const publicaciones_actualizadas = [...publicaciones, nuevas];
 
 		const publicaciones_key = publicaciones_actualizadas.length - 1;
 		const usuarios_actualizados = [...usuarios];
@@ -32,4 +37,8 @@ export const traerPorUsuario = (key) => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({ type: ERROR, payload: `❗❗Error: ${error.message}` });
 	}
+};
+
+export const abrirCerrar = (pub_key, com_key) => (dispatch) => {
+	console.log(pub_key, com_key);
 };

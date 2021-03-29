@@ -38,3 +38,8 @@ body {
 li {
 	margin: 0 15px;
 }
+.contenedor_tareas {
+	font-size: 20px;
+	margin-left: 50px;
+	margin-bottom: 70px;
+}

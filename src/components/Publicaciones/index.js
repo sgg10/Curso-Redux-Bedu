@@ -80,7 +80,7 @@ class Publicaciones extends Component {
 			<div key={publicacion.id} className='pub_titulo' onClick={() => this.mostrarComentarios(pub_key, com_key, publicacion.comentarios)}>
 				<h2>{publicacion.title}</h2>
 				<h3>{publicacion.body}</h3>
-				{publicacion.abierto ? <Comentarios /> : ""}
+				{publicacion.abierto ? <Comentarios comentarios={publicacion.comentarios} /> : ""}
 			</div>
 		));
 

@@ -4,6 +4,7 @@ import Spinner from "../common/Spinner";
 import Fatal from "../common/Fatal";
 
 import * as tareasActions from "../../actions/tareasActions";
+import { Link } from "react-router-dom";
 
 class Tareas extends Component {
 	componentDidMount() {
@@ -39,8 +40,14 @@ class Tareas extends Component {
 	};
 
 	render() {
-		console.log(this.props);
-		return <div>{this.mostrarContenido()}</div>;
+		return (
+			<div>
+				<button>
+					<Link to='/tareas/guardar/'>Agregar</Link>
+				</button>
+				<div>{this.mostrarContenido()}</div>
+			</div>
+		);
 	}
 }
 
